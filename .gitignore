@@ -1,0 +1,9 @@
+bin/
+cbios
+*~
+.ipynb_checkpoints/
+__pycache__/
+_build/
+processed_data/*.dat
+.*.sw?
+doc/md
