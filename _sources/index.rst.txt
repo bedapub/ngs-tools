@@ -1,0 +1,26 @@
+.. ngs-tools documentation master file, created by
+   sphinx-quickstart on Fri Apr 28 15:50:21 2023.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
+
+Welcome to ngs-tools's documentation!
+=====================================
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Contents
+
+   introduction.rst
+   usage.rst
+   installation.rst
+   tools.md
+   contributing.rst
+   license.rst
+
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
