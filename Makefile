@@ -11,6 +11,7 @@ PROGS = annotate_loci \
         merge_fastq \
 	merge_gct \
 	minmax_gct \
+        parse_gtf \
 	reorder_gct \
 	replace_header_gct \
 	sort_gct \
@@ -90,6 +91,12 @@ merge_gct: $S/merge_gct.sh
 minmax_gct: $S/minmax_gct.sh
 	cp -p $S/minmax_gct.sh $B/minmax_gct
 	chmod +x $B/minmax_gct
+
+parse_gtf: $C/parse_gtf.c $K/plabla.c $K/linestream.c $K/rofutil.c $K/array.c \
+	$K/format.c $K/log.c $K/arg.c $K/hlrmisc.c
+	@-/bin/rm -f $(B)/parse_gtf
+	$(CC) $(CCFLAGS) $C/parse_gtf.c -o $B/parse_gtf $K/plabla.c $K/linestream.c $K/rofutil.c \
+	$K/array.c $K/format.c $K/log.c $K/arg.c $K/hlrmisc.c -lm -I$K
 
 reorder_gct: $S/minmax_gct.sh
 	cp -p $S/reorder_gct.sh $B/reorder_gct
