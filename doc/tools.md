@@ -289,6 +289,40 @@ Report bugs and feedback to roland.schmucki@roche.com
 
 ```
 
+## parse_gtf
+
+```
+
+  Description: 
+
+  Parse a GTF file and output attributes to stdout. 
+
+  Usage: parse_gtf [-h] -gtf INFILE  + 1 Optional argument from below
+
+  Optional arguments
+
+        -output-fields="gene_name,gene_synonym,product" 
+
+  The above example will output all gtf fields named "gene_name", "gene_synonym", and "product" 
+
+        -refseq 
+
+  This option will work on a gtf from refseq and do the following  
+             0) discard lines that are not exons 
+             1) get gene number from the field Dbxref "GeneID: 
+                and replace the input gene_id value with the gene number 
+             2) remove transcript_id fields if they contain "rnaN" numbers where 
+                N is an integer 
+             3) remove version number from transcript_id field 
+                (e.g. transcript_id "NR_046018.2" --> transcript_id "NR_046018") 
+             4) remove duplicated transcript_id fields 
+
+  Note there will be a warning if there is no proper transcript accession id (mostly miRNAs)
+
+  Contact roland.schmucki@roche.com
+
+```
+
 ## replace_header_gct
 
 ```
