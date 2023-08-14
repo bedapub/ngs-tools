@@ -25,7 +25,7 @@ S = ./scripts
 R = ./refsnake
 K = /usr/bios-to-go/kern
 
-all: $B $D $(PROGS) $D/tools.md
+all: $B $D $(PROGS) $D/tools.md $D/snakeref.md
 
 clean:
 	for s in $(PROGS) ; do \
