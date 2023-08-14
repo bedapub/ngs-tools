@@ -4,25 +4,26 @@ CCFLAGS = -Wall -Wno-parentheses -Wno-sign-compare -Wno-unknown-pragmas
 PROGS = annotate_loci \
         count2tpm \
         expression2gct \
-	extract_sequence \
+        extract_sequence \
         make_cls \
-	make_design_contrast_matrix \
-	mean \
+        make_design_contrast_matrix \
+        mean \
         merge_fastq \
-	merge_gct \
-	minmax_gct \
+        merge_gct \
+        minmax_gct \
         parse_gtf \
-	reorder_gct \
-	replace_header_gct \
-	sort_gct \
-	subset_gct
+        reorder_gct \
+        replace_header_gct \
+        sort_gct \
+        subset_gct
 
 B = ./bin
 O = ./obj
 C = ./csrc
 D = ./doc
-K = /usr/bios-to-go/kern
 S = ./scripts
+R = ./refsnake
+K = /usr/bios-to-go/kern
 
 all: $B $D $(PROGS) $D/tools.md
 
@@ -116,4 +117,4 @@ subset_gct: $S/subset_gct.sh
 
 # Make documentation
 doc: $B $S/make_doc.sh
-	mkdir -p $D && bash $S/make_doc.sh -b $B -o $D/tools.md
+	mkdir -p $D && bash $S/make_doc.sh -b $B -o $D/tools.md && cp -p $R/README.md $D/snakeref.md

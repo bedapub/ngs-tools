@@ -4,3 +4,5 @@
 README.md
 Dockerfile
 .readthedocs.yml
+/refsnake
+!/refsnake/README.md
