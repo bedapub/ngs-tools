@@ -12,12 +12,11 @@ void usagef (int level)
 {
   romsg ("Description: \n"
          "\n"
-	       "Parse a GTF file and output attributes to stdout. \n"
-         "\nUsage:%s\n"
+	 "Parse a GTF file and output attributes to stdout. \n"
          "\n"
-         " -gtf INFILE  + 1 Optional argument from below\n"
+	  "Usage: %s [-h] -gtf INFILE  + 1 Optional argument from below \n"
          "\n"
-         "Options:\n"
+         "Optional arguments\n"
          "\n"
          "\t-output-fields=\"gene_name,gene_synonym,product\" \n"
          "\n"
@@ -34,9 +33,11 @@ void usagef (int level)
          "             3) remove version number from transcript_id field \n"
          "                (e.g. transcript_id \"NR_046018.2\" --> transcript_id \"NR_046018\") \n"
          "             4) remove duplicated transcript_id fields \n"
-         "\nNote there will be a warning if there is no proper transcript accession id (mostly miRNAs)\n"
+	 "\n"
+         "Note there will be a warning if there is no proper transcript accession id (mostly miRNAs) \n"
          "\n"
-         "\nReport bugs and feedback to %s"
+         "\n"
+	  "Report bugs and feedback to %s"
          "\n",
          arg_getProgName (),AUTHOR_MAIL);
 }
