@@ -65,22 +65,24 @@ while getopts ho:b: opt; do
 done
 shift "$((OPTIND-1))"
 
-if [ ! -d $bindir ]; then
-  err "Input bin directory $bindir does not exist. Abort!"
+if [ ! -d ${bindir} ]; then
+  err "Input bin directory ${bindir} does not exist. Abort!"
   exit 1
 fi
 
 # Make title/header
-printf "# Tools\n\n" > $outfile
+printf "# Tools\n\n" > ${outfile}
 
 # Loop through all files in bin directory
-for f in $bindir/*; do
-  echo "$f"
-  s="$(basename $f)"
-  printf "## $s\n\n" >> $outfile
-  printf "\`\`\`\n" >> $outfile
-  ($f -h ) &>> $outfile
-  printf "\`\`\`\n\n" >> $outfile
+for f in "${bindir}"/*; do
+  if [ -f "$f" ]; then
+    echo "$f"
+    s="$(basename $f)"
+    printf "## $s\n\n" >> ${outfile}
+    printf "\`\`\`\n" >> ${outfile}
+    ($f -h ) &>> ${outfile}
+    printf "\`\`\`\n\n" >> ${outfile}
+  fi
 done
 
 exit 0
