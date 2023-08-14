@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="English" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tools &mdash; ngs-tools 0.1.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Contributing" href="contributing.html" />
+    <link rel="prev" title="Installation" href="installation.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            ngs-tools
+          </a>
+              <div class="version">
+                0.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Tools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#annotate-loci">annotate_loci</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#count2tpm">count2tpm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#expression2gct">expression2gct</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#extract-sequence">extract_sequence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#make-cls">make_cls</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#make-design-contrast-matrix">make_design_contrast_matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#mean">mean</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#merge-fastq">merge_fastq</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#merge-gct">merge_gct</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#minmax-gct">minmax_gct</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#parse-gtf">parse_gtf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#reorder-gct">reorder_gct</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#replace-header-gct">replace_header_gct</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sort-gct">sort_gct</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#subset-gct">subset_gct</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ngs-tools</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Tools</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/tools.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="tools">
+<h1>Tools<a class="headerlink" href="#tools" title="Permalink to this heading"></a></h1>
+<section id="annotate-loci">
+<h2>annotate_loci<a class="headerlink" href="#annotate-loci" title="Permalink to this heading"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Description</span><span class="p">:</span> 
+
+<span class="n">This</span> <span class="n">tool</span> <span class="n">takes</span> <span class="n">one</span> <span class="nb">input</span> <span class="n">file</span> <span class="k">with</span> <span class="n">genomic</span> <span class="n">coordinates</span> <span class="ow">in</span> <span class="n">its</span> <span class="n">first</span> <span class="n">column</span> <span class="ow">and</span> 
+<span class="n">an</span> <span class="n">additional</span> <span class="n">file</span> <span class="k">with</span> <span class="n">gene</span> <span class="n">locus</span> <span class="n">information</span><span class="o">.</span> <span class="n">It</span> <span class="n">then</span> <span class="n">tries</span> <span class="n">to</span> <span class="n">annoate</span> <span class="nb">all</span> 
+<span class="n">genomic</span> <span class="n">regions</span> <span class="kn">from</span> <span class="nn">the</span> <span class="n">first</span> <span class="n">file</span><span class="p">,</span> <span class="n">line</span> <span class="n">by</span> <span class="n">line</span><span class="p">,</span> 
+<span class="k">with</span> <span class="n">the</span> <span class="n">annotations</span> <span class="kn">from</span> <span class="nn">the</span> <span class="n">second</span> <span class="n">file</span> <span class="n">by</span> <span class="n">overlapping</span> <span class="n">the</span> <span class="n">coordinates</span><span class="o">.</span> 
+
+<span class="n">Usage</span><span class="p">:</span> <span class="n">annotate_loci</span> <span class="o">-</span><span class="n">i</span> <span class="n">FILE</span> <span class="o">-</span><span class="n">loci</span> <span class="n">FILE</span> <span class="o">-</span><span class="nb">format</span> <span class="n">gct</span><span class="o">|</span><span class="n">topTable</span> 
+
+	<span class="o">-</span><span class="n">i</span>                    <span class="nb">input</span> <span class="n">file</span> <span class="k">with</span> <span class="n">loci</span> <span class="n">information</span> <span class="p">(</span><span class="n">required</span><span class="p">),</span> <span class="n">ie</span> <span class="n">first</span> <span class="n">column</span> 
+	                      <span class="n">must</span> <span class="n">contain</span> <span class="n">a</span> <span class="n">coordinate</span> <span class="n">string</span> 
+	                      <span class="n">CHR</span><span class="p">:</span><span class="n">BEGIN</span><span class="o">-</span><span class="n">END</span> <span class="p">,</span> <span class="n">ie</span> <span class="n">separated</span> <span class="n">by</span> <span class="n">colon</span> <span class="ow">and</span> <span class="n">dash</span><span class="o">.</span> <span class="n">If</span> <span class="n">the</span> <span class="nb">input</span> 
+	                      <span class="nb">format</span> <span class="ow">is</span> <span class="n">gct</span> <span class="ow">or</span> <span class="n">topTable</span> <span class="n">then</span> <span class="nb">all</span> <span class="n">subsequent</span> <span class="n">columns</span> <span class="n">sent</span> <span class="n">to</span> <span class="n">stdout</span> 
+	<span class="o">-</span><span class="n">loci</span>                 <span class="nb">input</span> <span class="n">file</span> <span class="k">with</span> <span class="n">loci</span> <span class="n">information</span> <span class="p">(</span><span class="n">required</span><span class="p">),</span> <span class="n">tab</span><span class="o">-</span><span class="n">delimited</span> <span class="nb">format</span><span class="p">:</span> 
+	                      <span class="n">CHR</span>   <span class="n">BEGIN</span>   <span class="n">END</span>   <span class="n">STRAND</span>   <span class="n">GENE</span>   <span class="n">SYMBOL</span>  <span class="n">DESCRIPTION</span> 
+	<span class="o">-</span><span class="nb">format</span> <span class="n">gct</span><span class="o">|</span><span class="n">topTable</span>  <span class="nb">input</span> <span class="n">file</span> <span class="o">-</span><span class="n">i</span> <span class="ow">is</span> <span class="ow">in</span> <span class="n">gct</span><span class="o">|</span><span class="n">topTable</span> <span class="nb">format</span> <span class="p">(</span><span class="n">optional</span><span class="p">)</span> 
+	<span class="o">-</span><span class="n">verbose</span>              <span class="n">show</span> <span class="n">more</span> <span class="n">information</span> <span class="p">(</span><span class="n">optional</span><span class="p">)</span> 
+
+<span class="n">Report</span> <span class="n">bugs</span> <span class="ow">and</span> <span class="n">feedback</span> <span class="n">to</span> <span class="n">roland</span><span class="o">.</span><span class="n">schmucki</span><span class="nd">@roche</span><span class="o">.</span><span class="n">com</span> 
+
+</pre></div>
+</div>
+</section>
+<section id="count2tpm">
+<h2>count2tpm<a class="headerlink" href="#count2tpm" title="Permalink to this heading"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Description</span><span class="p">:</span> 
+
+<span class="n">Calculate</span> <span class="n">normalized</span> <span class="n">read</span> <span class="n">counts</span> <span class="k">for</span> <span class="nb">input</span> <span class="n">GCT</span> <span class="n">file</span><span class="o">.</span> 
+<span class="n">Source</span><span class="p">:</span> 
+<span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">haroldpimentel</span><span class="o">.</span><span class="n">wordpress</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="mi">2014</span><span class="o">/</span><span class="mi">05</span><span class="o">/</span><span class="mi">08</span><span class="o">/</span><span class="n">what</span><span class="o">-</span><span class="n">the</span><span class="o">-</span><span class="n">fpkm</span><span class="o">-</span><span class="n">a</span><span class="o">-</span><span class="n">review</span><span class="o">-</span><span class="n">rna</span><span class="o">-</span><span class="n">seq</span><span class="o">-</span><span class="n">expression</span><span class="o">-</span><span class="n">units</span><span class="o">/</span> 
+<span class="n">Note</span> <span class="n">that</span> <span class="n">NaN</span> <span class="n">are</span> <span class="n">output</span> <span class="k">as</span> <span class="n">zero</span> <span class="mf">0.</span> 
+
+<span class="n">Usage</span><span class="p">:</span> <span class="n">count2tpm</span> <span class="o">-</span><span class="n">i</span> <span class="n">GCT</span><span class="o">-</span><span class="n">file</span> <span class="o">-</span><span class="n">l</span> <span class="n">Length</span><span class="o">-</span><span class="n">file</span> <span class="p">[</span><span class="o">-</span><span class="n">cpm</span><span class="o">|</span><span class="n">rpkm</span><span class="o">|</span><span class="n">tpm</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">log2</span><span class="o">|</span><span class="n">log10</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">col</span> <span class="n">INT</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">digits</span> <span class="n">INT</span><span class="p">]</span> 
+
+
+<span class="n">Mandatory</span> <span class="nb">input</span> <span class="n">parameters</span><span class="p">:</span> 
+
+	<span class="o">-</span><span class="n">g</span>     <span class="n">GCT</span> <span class="n">file</span> <span class="k">with</span> <span class="n">read</span> <span class="n">counts</span> <span class="n">per</span> <span class="n">gene</span> <span class="p">(</span><span class="n">unique</span> <span class="n">gene</span> <span class="n">identifier</span> <span class="ow">in</span> <span class="mi">1</span><span class="n">st</span> <span class="n">column</span><span class="p">):</span> 
+	<span class="o">-</span><span class="n">l</span>     <span class="n">tab</span><span class="o">-</span><span class="n">delimited</span> <span class="n">file</span> <span class="k">with</span> <span class="n">gene</span> <span class="n">identifier</span> <span class="ow">in</span> <span class="mi">1</span><span class="n">st</span> <span class="ow">and</span> <span class="n">gene</span> <span class="n">length</span> <span class="ow">in</span> 
+	       <span class="mi">2</span><span class="n">nd</span> <span class="n">columns</span><span class="p">,</span> <span class="n">respectively</span><span class="o">.</span> 
+	       <span class="n">These</span> <span class="n">files</span> <span class="n">can</span> <span class="n">be</span> <span class="n">found</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">corresponding</span> <span class="n">genome</span> <span class="n">annotation</span> <span class="n">folders</span><span class="p">,</span> 
+	       <span class="n">e</span><span class="o">.</span><span class="n">g</span><span class="o">.</span> <span class="k">for</span> <span class="n">human</span> <span class="ow">in</span> <span class="n">folder</span> <span class="o">/&lt;</span><span class="n">path</span> <span class="n">to</span> <span class="n">genomes</span> <span class="n">folder</span><span class="o">&gt;/</span><span class="n">hg38</span><span class="o">/</span><span class="n">gtf</span><span class="o">/</span><span class="n">refseq</span><span class="o">/</span> 
+
+
+<span class="n">Optional</span> <span class="nb">input</span> <span class="n">parameters</span><span class="p">:</span> 
+
+	<span class="o">-</span><span class="n">tpm</span>     <span class="n">transcript</span> <span class="n">per</span> <span class="n">million</span> <span class="p">(</span><span class="n">default</span><span class="p">)</span> 
+	<span class="o">-</span><span class="n">rpkm</span>    <span class="n">reads</span> <span class="n">per</span> <span class="n">kilobase</span> <span class="n">of</span> <span class="n">exon</span> <span class="n">per</span> <span class="n">million</span> <span class="n">reads</span> <span class="n">mapped</span> 
+	<span class="o">-</span><span class="n">cpm</span>     <span class="n">counts</span> <span class="n">per</span> <span class="n">million</span> <span class="n">mapped</span> <span class="n">reads</span> 
+	<span class="o">-</span><span class="n">log2</span>    <span class="n">log2</span> <span class="n">transform</span> <span class="n">output</span> <span class="p">(</span><span class="n">adding</span> <span class="mf">0.01</span><span class="p">)</span> 
+	<span class="o">-</span><span class="n">log10</span>   <span class="n">log10</span> <span class="n">transform</span> <span class="n">output</span> <span class="p">(</span><span class="n">adding</span> <span class="mf">0.01</span><span class="p">)</span> 
+	<span class="o">-</span><span class="n">col</span>     <span class="k">if</span> <span class="nb">input</span> <span class="n">length</span> <span class="n">file</span> <span class="n">contains</span> <span class="n">several</span> <span class="n">columns</span><span class="p">,</span> <span class="n">then</span> <span class="n">specify</span> 
+	         <span class="n">the</span> <span class="n">column</span> <span class="n">number</span> <span class="k">with</span> <span class="n">this</span> <span class="n">index</span> <span class="p">(</span><span class="n">default</span> <span class="n">last</span> <span class="n">column</span><span class="p">)</span> 
+	<span class="o">-</span><span class="n">digits</span>  <span class="n">number</span> <span class="n">of</span> <span class="n">digits</span> <span class="n">after</span> <span class="n">comma</span> <span class="k">for</span> <span class="n">output</span> <span class="p">(</span><span class="n">default</span> <span class="mi">3</span><span class="p">)</span> 
+
+
+ <span class="n">Report</span> <span class="n">bugs</span> <span class="ow">and</span> <span class="n">feedback</span> <span class="n">to</span> <span class="n">roland</span><span class="o">.</span><span class="n">schmucki</span><span class="nd">@roche</span><span class="o">.</span><span class="n">com</span> 
+
+</pre></div>
+</div>
+</section>
+<section id="expression2gct">
+<h2>expression2gct<a class="headerlink" href="#expression2gct" title="Permalink to this heading"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Description</span><span class="p">:</span> 
+
+<span class="n">Convert</span> <span class="n">biokit</span> <span class="n">expression</span> <span class="n">gene</span> <span class="n">count</span> <span class="n">files</span> <span class="n">into</span> <span class="n">GCT</span> <span class="nb">format</span><span class="o">.</span> 
+
+<span class="n">Usage</span><span class="p">:</span> <span class="n">expression2gct</span> <span class="o">-</span><span class="n">infile</span><span class="o">=</span><span class="s1">&#39;list of files&#39;</span> <span class="o">-</span><span class="n">outfile</span><span class="o">-</span><span class="n">prefix</span> <span class="n">STRING</span> 
+
+<span class="n">Mandatory</span> <span class="nb">input</span> <span class="n">parameters</span><span class="p">:</span> 
+
+        <span class="o">-</span><span class="n">infile</span><span class="p">:</span> <span class="n">either</span> <span class="n">a</span> <span class="n">file</span> <span class="n">containing</span> <span class="n">the</span> <span class="n">paths</span> <span class="n">to</span> <span class="nb">input</span> <span class="n">expression</span> <span class="n">files</span> <span class="n">OR</span> 
+                 <span class="nb">list</span> <span class="n">of</span> <span class="n">space</span><span class="o">/</span><span class="n">comma</span><span class="o">-</span><span class="n">separated</span> <span class="n">files</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">g</span><span class="o">.</span> 
+                 <span class="o">-</span><span class="n">infile</span><span class="o">=</span><span class="s1">&#39;sample1.expression,sample2.expression&#39;</span> 
+
+        <span class="o">-</span><span class="n">outfile</span><span class="o">-</span><span class="n">prefix</span><span class="p">:</span> <span class="n">there</span> <span class="n">are</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">4</span> <span class="n">output</span> <span class="n">files</span><span class="p">,</span> <span class="n">already</span> <span class="n">existing</span> <span class="n">files</span> <span class="n">of</span> <span class="n">same</span> 
+                         <span class="n">name</span> <span class="n">will</span> <span class="n">be</span> <span class="n">overwritten</span><span class="p">:</span>
+                         <span class="n">STRING_rpkm</span><span class="o">.</span><span class="n">gct</span> 
+                         <span class="n">STRING_count</span><span class="o">.</span><span class="n">gct</span> 
+
+<span class="n">Optional</span> <span class="nb">input</span> <span class="n">parameters</span><span class="p">:</span> 
+
+       <span class="o">-</span><span class="n">use</span><span class="o">-</span><span class="n">unique</span><span class="o">-</span><span class="n">counts</span>  <span class="p">(</span><span class="n">use</span> <span class="n">the</span> <span class="n">unique</span> <span class="n">rpkm</span><span class="o">/</span><span class="n">read</span> <span class="n">counts</span><span class="p">,</span> <span class="n">default</span> <span class="ow">is</span> <span class="n">multiple</span><span class="p">)</span> 
+
+       <span class="o">-</span><span class="n">old</span><span class="o">-</span><span class="n">biokit</span><span class="o">-</span><span class="nb">format</span>  <span class="p">(</span><span class="n">use</span> <span class="k">if</span> <span class="n">expression</span> <span class="n">file</span> <span class="n">was</span> <span class="n">generated</span> <span class="k">with</span> <span class="n">Biokit</span> <span class="n">v3</span><span class="mf">.8</span> <span class="ow">or</span> 
+                           <span class="n">earlier</span><span class="p">;</span> <span class="n">the</span> <span class="n">annotation</span> <span class="ow">is</span> <span class="ow">in</span> <span class="n">column</span> <span class="c1">#7 instead of #8) </span>
+
+
+<span class="n">Report</span> <span class="n">bugs</span> <span class="ow">and</span> <span class="n">feedback</span> <span class="n">to</span> <span class="n">roland</span><span class="o">.</span><span class="n">schmucki</span><span class="nd">@roche</span><span class="o">.</span><span class="n">com</span> 
+
+</pre></div>
+</div>
+</section>
+<section id="extract-sequence">
+<h2>extract_sequence<a class="headerlink" href="#extract-sequence" title="Permalink to this heading"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Description</span><span class="p">:</span> 
+
+<span class="n">Extract</span> <span class="kn">from</span> <span class="nn">an</span> <span class="nb">input</span> <span class="n">fasta</span> <span class="ow">or</span> <span class="n">fastq</span> <span class="n">file</span> <span class="n">sequences</span> <span class="n">by</span> <span class="n">ids</span> <span class="kn">from</span> <span class="nn">another</span> <span class="nb">input</span> <span class="n">file</span><span class="o">.</span>
+
+<span class="n">Usage</span><span class="p">:</span> <span class="n">extract_sequence</span> <span class="p">[</span><span class="o">-</span><span class="n">verbose</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;. TAB&#39;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">useEntireIdLine</span><span class="p">]</span> 
+          <span class="p">[</span><span class="o">-</span><span class="n">quick</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="ow">not</span><span class="p">]</span> <span class="o">-</span><span class="n">ids</span> <span class="n">ids_file</span> <span class="o">-</span><span class="n">fasta</span><span class="o">|</span><span class="n">fastq</span> <span class="n">fasta_file</span> 
+
+<span class="n">Mandatory</span> <span class="n">parameters</span><span class="p">:</span> 
+
+	  <span class="o">-</span><span class="n">ids</span>              <span class="n">file</span> <span class="n">name</span> <span class="n">containing</span> <span class="n">sequence</span> <span class="nb">id</span><span class="s1">&#39;s </span>
+	  <span class="o">-</span><span class="n">fasta</span><span class="o">|</span><span class="n">fastq</span>      <span class="n">file</span> <span class="n">name</span> <span class="n">containing</span> <span class="n">the</span> <span class="n">fasta</span> <span class="ow">or</span> <span class="n">fastq</span> <span class="n">sequences</span> 
+
+<span class="n">Optional</span> <span class="n">parameters</span><span class="p">:</span> 
+
+	  <span class="o">-</span><span class="n">delimiter</span>        <span class="n">delimiter</span> <span class="n">on</span> <span class="n">the</span> <span class="n">sequence</span> <span class="nb">id</span> <span class="n">line</span> 
+	  <span class="o">-</span><span class="n">useEntireIdLine</span>  <span class="n">use</span> <span class="n">the</span> <span class="n">entire</span> <span class="n">line</span> <span class="k">as</span> <span class="nb">id</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">split</span> <span class="n">line</span> <span class="n">by</span> 
+	                    <span class="o">-</span><span class="n">delimiter</span> <span class="n">into</span> <span class="n">fields</span> 
+	  <span class="o">-</span><span class="n">quick</span>            <span class="n">stop</span> <span class="n">search</span> <span class="n">after</span> <span class="n">the</span> <span class="n">first</span> <span class="n">match</span> 
+	  <span class="o">-</span><span class="ow">not</span>              <span class="n">inverse</span> <span class="n">the</span> <span class="n">search</span><span class="p">,</span> <span class="n">ie</span> <span class="n">output</span> <span class="n">sequences</span> <span class="n">that</span> <span class="n">are</span> 
+	                    <span class="ow">not</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">ids</span> <span class="n">file</span> 
+	  <span class="o">-</span><span class="n">verbose</span>          <span class="n">output</span> <span class="n">additional</span> <span class="n">information</span> 
+
+
+<span class="n">Report</span> <span class="n">bugs</span> <span class="ow">and</span> <span class="n">feedback</span> <span class="n">to</span> <span class="n">roland</span><span class="o">.</span><span class="n">schmucki</span><span class="nd">@roche</span><span class="o">.</span><span class="n">com</span> 
+
+</pre></div>
+</div>
+</section>
+<section id="make-cls">
+<h2>make_cls<a class="headerlink" href="#make-cls" title="Permalink to this heading"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Description</span><span class="p">:</span> 
+
+<span class="n">Create</span> <span class="n">a</span> <span class="n">phenotype</span> <span class="n">CLS</span> <span class="n">file</span> <span class="kn">from</span> <span class="nn">a</span> <span class="n">given</span> <span class="n">GCT</span> <span class="ow">and</span> <span class="n">annotation</span> <span class="n">file</span><span class="o">.</span> 	<span class="n">The</span> <span class="n">CLS</span> <span class="nb">format</span> <span class="ow">is</span> <span class="n">defined</span> <span class="n">here</span><span class="p">:</span> 
+<span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">software</span><span class="o">.</span><span class="n">broadinstitute</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">cancer</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">gsea</span><span class="o">/</span><span class="n">wiki</span><span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">Data_formats</span><span class="c1">#Phenotype_Data_Formats </span>
+
+<span class="n">Usage</span><span class="p">:</span> <span class="n">make_cls</span> <span class="o">-</span><span class="n">gct</span> <span class="n">FILE</span>  <span class="o">-</span><span class="n">i</span> <span class="n">FILE</span> 
+
+<span class="n">Mandatory</span> <span class="nb">input</span> <span class="n">parameters</span><span class="p">:</span> 
+
+	  <span class="o">-</span><span class="n">gct</span> <span class="n">GCT_FILE</span>         <span class="nb">input</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">GCT</span> <span class="nb">format</span> 
+	  <span class="o">-</span><span class="n">i</span>   <span class="n">ANNOTATION_FILE</span>  <span class="nb">input</span> <span class="n">file</span> <span class="k">with</span> <span class="n">sample</span> <span class="n">annotations</span> 
+
+	<span class="n">The</span> <span class="n">annotation</span> <span class="n">file</span> <span class="ow">is</span> <span class="n">a</span> <span class="mi">2</span> <span class="n">column</span> <span class="n">tab</span><span class="o">-</span><span class="n">delimited</span> <span class="n">file</span> <span class="p">(</span><span class="n">comments</span> <span class="ow">or</span> <span class="n">header</span> <span class="n">mark</span> <span class="k">with</span> <span class="c1">#) </span>
+	  <span class="n">column</span> <span class="mi">1</span><span class="p">:</span> <span class="n">sample</span> <span class="n">name</span> <span class="k">as</span> <span class="n">given</span> <span class="ow">in</span> <span class="nb">input</span> <span class="n">GCT</span> <span class="n">file</span> 
+	  <span class="n">column</span> <span class="mi">2</span><span class="p">:</span> <span class="n">sample</span> <span class="n">group</span> 
+
+
+<span class="n">Report</span> <span class="n">bugs</span> <span class="ow">and</span> <span class="n">feedback</span> <span class="n">to</span> <span class="n">roland</span><span class="o">.</span><span class="n">schmucki</span><span class="nd">@roche</span><span class="o">.</span><span class="n">com</span> 
+
+</pre></div>
+</div>
+</section>
+<section id="make-design-contrast-matrix">
+<h2>make_design_contrast_matrix<a class="headerlink" href="#make-design-contrast-matrix" title="Permalink to this heading"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Description</span><span class="p">:</span> 
+
+<span class="n">Usage</span><span class="p">:</span> <span class="n">make_design_contrast_matrix</span> <span class="p">[</span><span class="o">-</span><span class="n">prefix</span> <span class="n">STRING</span><span class="p">]</span> <span class="o">-</span><span class="n">gct</span> <span class="n">FILE</span> <span class="o">-</span><span class="n">i</span> <span class="n">FILE</span> 
+
+<span class="n">Mandatory</span> <span class="n">parameters</span><span class="p">:</span> 
+
+	<span class="o">-</span><span class="n">gct</span> <span class="n">GCT_FILE</span>         <span class="nb">input</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">GCT</span> <span class="nb">format</span> 
+	<span class="o">-</span><span class="n">i</span>   <span class="n">ANNOTATION_FILE</span>  <span class="nb">input</span> <span class="n">file</span> <span class="k">with</span> <span class="n">sample</span> <span class="n">annotations</span> <span class="k">with</span> <span class="mi">2</span> <span class="n">columns</span> <span class="p">(</span><span class="n">see</span> <span class="n">below</span><span class="p">)</span> 
+
+<span class="n">Optional</span> <span class="n">parameters</span><span class="p">:</span> 
+
+	<span class="o">-</span><span class="n">prefix</span> <span class="n">STRING</span>        <span class="n">a</span> <span class="n">string</span> <span class="k">for</span> <span class="n">the</span> <span class="n">output</span> <span class="n">prefix</span> 
+
+	<span class="n">The</span> <span class="n">annotation</span> <span class="n">file</span> <span class="ow">is</span> <span class="n">a</span> <span class="mi">2</span> <span class="n">column</span> <span class="n">tab</span><span class="o">-</span><span class="n">delimited</span> <span class="n">file</span> <span class="p">(</span><span class="n">comments</span> <span class="ow">or</span> <span class="n">header</span> <span class="n">mark</span> <span class="k">with</span> <span class="c1">#) </span>
+	  <span class="n">column</span> <span class="mi">1</span><span class="p">:</span> <span class="n">sample</span> <span class="n">name</span> <span class="k">as</span> <span class="n">given</span> <span class="ow">in</span> <span class="nb">input</span> <span class="n">GCT</span> <span class="n">file</span> 
+	  <span class="n">column</span> <span class="mi">2</span><span class="p">:</span> <span class="n">sample</span> <span class="n">group</span> 
+
+
+<span class="n">Report</span> <span class="n">bugs</span> <span class="ow">and</span> <span class="n">feedback</span> <span class="n">to</span> <span class="n">roland</span><span class="o">.</span><span class="n">schmucki</span><span class="nd">@roche</span><span class="o">.</span><span class="n">com</span> 
+
+</pre></div>
+</div>
+</section>
+<section id="mean">
+<h2>mean<a class="headerlink" href="#mean" title="Permalink to this heading"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Description</span><span class="p">:</span> 
+
+<span class="n">Calculate</span> <span class="n">means</span> <span class="n">per</span> <span class="n">sample</span> <span class="n">conditions</span><span class="o">.</span> 
+
+<span class="n">Usage</span><span class="p">:</span> <span class="n">mean</span> <span class="p">[</span><span class="o">-</span><span class="n">skip</span> <span class="n">INT</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">gzip</span><span class="p">]</span>  <span class="o">-</span><span class="n">i</span> <span class="n">INFILE</span>  <span class="o">-</span><span class="n">s</span> <span class="n">SAMPLE_ANNOTATIONS</span> 
+
+<span class="n">Mandatory</span> <span class="n">parameters</span><span class="p">:</span> 
+	  <span class="o">-</span><span class="n">i</span> <span class="n">FILE</span>  <span class="n">inptu</span> <span class="n">file</span> <span class="k">with</span> <span class="n">sample</span> <span class="n">data</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">g</span><span class="o">.</span> <span class="n">read</span> <span class="n">counts</span> 
+	  <span class="o">-</span><span class="n">s</span> <span class="n">FILE</span>  <span class="nb">input</span> <span class="n">file</span> <span class="k">with</span> <span class="n">sample</span> <span class="n">annotations</span> 
+
+<span class="n">The</span> <span class="n">SAMPLE_ANNOTATIONS</span> <span class="n">file</span> <span class="ow">is</span> <span class="n">tab</span><span class="o">-</span><span class="n">delimited</span> <span class="nb">input</span> <span class="n">file</span> <span class="k">with</span> <span class="n">at</span> <span class="n">least</span> <span class="mi">2</span> <span class="n">columns</span><span class="p">:</span> 
+	 <span class="n">column</span> <span class="mi">1</span><span class="p">:</span> <span class="n">sample</span> <span class="n">name</span> 
+	 <span class="n">column</span> <span class="mi">2</span><span class="p">:</span> <span class="n">sample</span> <span class="n">condition</span> 
+
+<span class="n">The</span> <span class="n">read</span> <span class="n">count</span> <span class="kn">from</span> <span class="nn">INFILE</span> <span class="n">are</span> <span class="n">averaged</span> <span class="p">(</span><span class="n">mean</span><span class="p">)</span> <span class="k">for</span> <span class="n">each</span> <span class="n">sample</span> <span class="n">condition</span><span class="o">.</span> 
+<span class="n">The</span> <span class="n">INFILE</span> <span class="n">headers</span> <span class="n">should</span> <span class="n">match</span> <span class="k">with</span> <span class="n">the</span> <span class="n">sample</span> <span class="n">names</span> <span class="n">specified</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">SAMPLE_ANNOTATIONS</span> <span class="n">file</span><span class="o">.</span> 
+<span class="n">Note</span> <span class="n">that</span> <span class="n">the</span> <span class="n">header</span> <span class="n">line</span> <span class="n">must</span> <span class="n">begin</span> <span class="k">with</span> <span class="s1">&#39;#&#39;</span> <span class="ow">or</span> <span class="k">with</span> <span class="s1">&#39;ID&#39;</span> 
+
+<span class="n">Optional</span> <span class="n">parameters</span><span class="p">:</span> 
+
+	  <span class="o">-</span><span class="n">skip</span> <span class="n">INT</span>     <span class="n">denotes</span> <span class="n">how</span> <span class="n">many</span> <span class="n">columns</span> <span class="kn">from</span> <span class="nn">the</span> <span class="n">INFILE</span> <span class="n">should</span> <span class="n">be</span> <span class="n">skipped</span> <span class="ow">and</span> 
+	                <span class="ow">not</span> <span class="n">used</span> <span class="k">for</span> <span class="n">calculation</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">g</span><span class="o">.</span> <span class="n">skip</span> <span class="n">ID</span> <span class="ow">or</span> <span class="n">description</span> <span class="n">columns</span><span class="p">,</span> <span class="n">default</span> <span class="mi">6</span> 
+	  <span class="o">-</span><span class="n">gzip</span>         <span class="n">use</span> <span class="k">if</span> <span class="n">INFILE</span> <span class="ow">is</span> <span class="n">gzipped</span>
+
+<span class="n">Report</span> <span class="n">bugs</span> <span class="ow">and</span> <span class="n">feedback</span> <span class="n">to</span> <span class="n">roland</span><span class="o">.</span><span class="n">schmucki</span><span class="nd">@roche</span><span class="o">.</span><span class="n">com</span> 
+
+</pre></div>
+</div>
+</section>
+<section id="merge-fastq">
+<h2>merge_fastq<a class="headerlink" href="#merge-fastq" title="Permalink to this heading"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Description</span><span class="p">:</span> 
+
+<span class="n">Merge</span> <span class="n">reads</span> <span class="kn">from</span> <span class="nn">several</span> <span class="n">fastq</span> <span class="n">files</span> <span class="n">into</span> <span class="n">one</span> <span class="n">fastq</span> <span class="n">file</span><span class="o">.</span> 
+<span class="n">IMPORTANT</span><span class="p">:</span> <span class="nb">input</span> <span class="n">files</span> <span class="k">for</span> <span class="n">mate</span> <span class="n">R1</span> <span class="ow">and</span> <span class="n">R2</span> <span class="n">reads</span> <span class="n">must</span> <span class="n">be</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">same</span> <span class="n">ORDER</span><span class="o">.</span> 
+
+<span class="n">Usage</span><span class="p">:</span> <span class="n">merge_fastq</span> <span class="p">[</span><span class="o">-</span><span class="n">sbatch</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">t</span> <span class="n">INT</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">old</span><span class="o">-</span><span class="n">version</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">script</span><span class="o">-</span><span class="n">prefix</span> <span class="n">STR</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">bsub</span><span class="o">-</span><span class="n">path</span> <span class="n">STR</span><span class="p">]</span> <span class="o">-</span><span class="n">i</span> <span class="n">FILE</span> 
+
+<span class="n">Mandatory</span> <span class="n">parameters</span><span class="p">:</span> 
+
+  <span class="o">-</span><span class="n">i</span>  <span class="n">input_file</span>  <span class="n">tab</span><span class="o">-</span><span class="n">delimited</span> <span class="n">file</span> <span class="k">with</span> <span class="mi">2</span> <span class="n">columns</span><span class="p">:</span> <span class="nb">input</span> <span class="n">gzipped</span> <span class="n">fastq</span> <span class="n">file</span><span class="p">,</span> 
+                  <span class="n">output</span> <span class="n">gzipped</span> <span class="n">fastq</span> <span class="n">file</span> 
+
+
+<span class="n">Optional</span> <span class="n">parameters</span><span class="p">:</span> 
+
+  <span class="o">-</span><span class="n">sbatch</span>         <span class="n">use</span> <span class="s2">&quot;sbatch&quot;</span> <span class="k">for</span> <span class="n">submitting</span> <span class="n">to</span> <span class="n">queue</span><span class="p">,</span> <span class="n">default</span> <span class="ow">is</span> <span class="s2">&quot;bsub&quot;</span> 
+  <span class="o">-</span><span class="n">t</span>  <span class="n">integer</span>     <span class="n">number</span> <span class="n">of</span> <span class="n">minutes</span> <span class="k">for</span> <span class="n">queuing</span> <span class="n">system</span><span class="p">,</span> <span class="n">default</span> <span class="mi">360</span> <span class="o">=</span> <span class="mi">6</span> <span class="n">hours</span><span class="p">,</span> <span class="n">only</span> <span class="k">for</span> <span class="s2">&quot;sbatch&quot;</span> 
+  <span class="o">-</span><span class="n">old</span><span class="o">-</span><span class="n">version</span>    <span class="n">use</span> <span class="n">old</span> <span class="n">version</span> <span class="n">which</span> <span class="ow">is</span> <span class="n">much</span> <span class="n">slower</span> 
+  <span class="o">-</span><span class="n">script</span><span class="o">-</span><span class="n">prefix</span>  <span class="n">prefix</span> <span class="k">for</span> <span class="n">temp</span> <span class="n">scripts</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">g</span><span class="o">.</span> <span class="n">path</span><span class="p">,</span> <span class="n">default</span> <span class="o">./</span><span class="n">merge_fastq</span> 
+  <span class="o">-</span><span class="n">bsub</span><span class="o">-</span><span class="n">path</span>      <span class="n">path</span> <span class="n">to</span> <span class="n">bsub</span> <span class="n">command</span> <span class="n">on</span> <span class="n">the</span> <span class="n">shpc</span><span class="p">,</span> <span class="n">default</span> <span class="n">bsub</span> 
+
+
+<span class="n">Report</span> <span class="n">bugs</span> <span class="ow">and</span> <span class="n">feedback</span> <span class="n">to</span> <span class="n">roland</span><span class="o">.</span><span class="n">schmucki</span><span class="nd">@roche</span><span class="o">.</span><span class="n">com</span> 
+
+</pre></div>
+</div>
+</section>
+<section id="merge-gct">
+<h2>merge_gct<a class="headerlink" href="#merge-gct" title="Permalink to this heading"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+  <span class="n">Usage</span><span class="p">:</span> <span class="n">merge_gct</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="n">FILE1</span> <span class="n">FILE2</span> <span class="p">[</span><span class="n">FILE3</span> <span class="o">...</span><span class="p">]</span>
+  
+  <span class="n">Merge</span> <span class="n">GCT</span> <span class="n">files</span>
+
+  <span class="n">Optional</span> <span class="n">arguments</span>
+
+    <span class="o">-</span><span class="n">h</span>   <span class="n">display</span> <span class="n">this</span> <span class="n">help</span> <span class="ow">and</span> <span class="n">exit</span>
+
+   <span class="n">Contact</span> <span class="n">roland</span><span class="o">.</span><span class="n">schmucki</span><span class="nd">@roche</span><span class="o">.</span><span class="n">com</span>
+
+</pre></div>
+</div>
+</section>
+<section id="minmax-gct">
+<h2>minmax_gct<a class="headerlink" href="#minmax-gct" title="Permalink to this heading"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+  <span class="n">Filter</span> <span class="n">away</span> <span class="nb">all</span> <span class="n">features</span> <span class="kn">from</span> <span class="nn">a</span> <span class="n">GCT</span> <span class="n">file</span> <span class="k">if</span> <span class="n">the</span> <span class="n">row</span> 
+  <span class="n">MIN</span> <span class="ow">or</span> <span class="n">MAX</span> <span class="ow">is</span> <span class="n">lower</span><span class="o">/</span><span class="n">greater</span><span class="o">/</span><span class="n">lower</span> <span class="n">equal</span> <span class="p">(</span><span class="n">MIN</span><span class="o">-</span><span class="n">EQUAL</span><span class="p">)</span><span class="o">/</span><span class="n">greater</span> <span class="n">equal</span> <span class="p">(</span><span class="n">MAX</span><span class="o">-</span><span class="n">EQUAL</span><span class="p">)</span>
+  <span class="n">than</span> <span class="n">a</span> <span class="n">user</span> <span class="n">given</span> <span class="n">threshold</span><span class="o">.</span> <span class="n">Use</span> <span class="n">MIN</span><span class="o">-/</span><span class="n">MAX</span><span class="o">-</span><span class="n">REVERSE</span> <span class="n">to</span> <span class="n">output</span> <span class="nb">reversed</span> <span class="n">comparison</span><span class="o">.</span>
+  <span class="n">Results</span> <span class="n">are</span> <span class="n">redirected</span> <span class="n">to</span> <span class="n">the</span> <span class="n">standard</span> <span class="n">output</span><span class="o">.</span>
+
+  <span class="mi">3</span> <span class="nb">input</span> <span class="n">arguments</span> <span class="n">required</span><span class="p">:</span>
+
+    <span class="mf">1.</span> <span class="nb">input</span> <span class="n">GCT</span> <span class="n">file</span>
+    <span class="mf">2.</span> <span class="n">threshold</span> <span class="n">value</span> <span class="p">(</span><span class="n">real</span> <span class="n">number</span><span class="p">)</span>
+    <span class="mf">3.</span> <span class="n">MIN</span> <span class="ow">or</span> <span class="n">MAX</span> <span class="ow">or</span> <span class="n">MIN</span><span class="o">-</span><span class="n">EQUAL</span> <span class="ow">or</span> <span class="n">MAX</span><span class="o">-</span><span class="n">EQUAL</span> <span class="ow">or</span> <span class="n">MIN</span><span class="o">-</span><span class="n">REVERSE</span> <span class="ow">or</span> <span class="n">MAX</span><span class="o">-</span><span class="n">REVERSE</span>
+
+  <span class="n">Contact</span> <span class="n">roland</span><span class="o">.</span><span class="n">schmucki</span><span class="nd">@roche</span><span class="o">.</span><span class="n">com</span>
+
+</pre></div>
+</div>
+</section>
+<section id="parse-gtf">
+<h2>parse_gtf<a class="headerlink" href="#parse-gtf" title="Permalink to this heading"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Description</span><span class="p">:</span> 
+
+<span class="n">Parse</span> <span class="n">a</span> <span class="n">GTF</span> <span class="n">file</span> <span class="ow">and</span> <span class="n">output</span> <span class="n">attributes</span> <span class="n">to</span> <span class="n">stdout</span><span class="o">.</span> 
+
+<span class="n">Usage</span><span class="p">:</span> <span class="n">parse_gtf</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="o">-</span><span class="n">gtf</span> <span class="n">INFILE</span>  <span class="o">+</span> <span class="mi">1</span> <span class="n">Optional</span> <span class="n">argument</span> <span class="kn">from</span> <span class="nn">below</span> 
+
+<span class="n">Optional</span> <span class="n">arguments</span>
+
+	<span class="o">-</span><span class="n">output</span><span class="o">-</span><span class="n">fields</span><span class="o">=</span><span class="s2">&quot;gene_name,gene_synonym,product&quot;</span> 
+
+<span class="n">The</span> <span class="n">above</span> <span class="n">example</span> <span class="n">will</span> <span class="n">output</span> <span class="nb">all</span> <span class="n">gtf</span> <span class="n">fields</span> <span class="n">named</span> <span class="s2">&quot;gene_name&quot;</span><span class="p">,</span> <span class="s2">&quot;gene_synonym&quot;</span><span class="p">,</span> <span class="ow">and</span> <span class="s2">&quot;product&quot;</span> 
+
+	<span class="o">-</span><span class="n">refseq</span> 
+
+<span class="n">This</span> <span class="n">option</span> <span class="n">will</span> <span class="n">work</span> <span class="n">on</span> <span class="n">a</span> <span class="n">gtf</span> <span class="kn">from</span> <span class="nn">refseq</span> <span class="ow">and</span> <span class="n">do</span> <span class="n">the</span> <span class="n">following</span>  
+             <span class="mi">0</span><span class="p">)</span> <span class="n">discard</span> <span class="n">lines</span> <span class="n">that</span> <span class="n">are</span> <span class="ow">not</span> <span class="n">exons</span> 
+             <span class="mi">1</span><span class="p">)</span> <span class="n">get</span> <span class="n">gene</span> <span class="n">number</span> <span class="kn">from</span> <span class="nn">the</span> <span class="n">field</span> <span class="n">Dbxref</span> <span class="s2">&quot;GeneID: </span>
+                <span class="ow">and</span> <span class="n">replace</span> <span class="n">the</span> <span class="nb">input</span> <span class="n">gene_id</span> <span class="n">value</span> <span class="k">with</span> <span class="n">the</span> <span class="n">gene</span> <span class="n">number</span> 
+             <span class="mi">2</span><span class="p">)</span> <span class="n">remove</span> <span class="n">transcript_id</span> <span class="n">fields</span> <span class="k">if</span> <span class="n">they</span> <span class="n">contain</span> <span class="s2">&quot;rnaN&quot;</span> <span class="n">numbers</span> <span class="n">where</span> 
+                <span class="n">N</span> <span class="ow">is</span> <span class="n">an</span> <span class="n">integer</span> 
+             <span class="mi">3</span><span class="p">)</span> <span class="n">remove</span> <span class="n">version</span> <span class="n">number</span> <span class="kn">from</span> <span class="nn">transcript_id</span> <span class="n">field</span> 
+                <span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">g</span><span class="o">.</span> <span class="n">transcript_id</span> <span class="s2">&quot;NR_046018.2&quot;</span> <span class="o">--&gt;</span> <span class="n">transcript_id</span> <span class="s2">&quot;NR_046018&quot;</span><span class="p">)</span> 
+             <span class="mi">4</span><span class="p">)</span> <span class="n">remove</span> <span class="n">duplicated</span> <span class="n">transcript_id</span> <span class="n">fields</span> 
+
+<span class="n">Note</span> <span class="n">there</span> <span class="n">will</span> <span class="n">be</span> <span class="n">a</span> <span class="n">warning</span> <span class="k">if</span> <span class="n">there</span> <span class="ow">is</span> <span class="n">no</span> <span class="n">proper</span> <span class="n">transcript</span> <span class="n">accession</span> <span class="nb">id</span> <span class="p">(</span><span class="n">mostly</span> <span class="n">miRNAs</span><span class="p">)</span> 
+
+
+<span class="n">Report</span> <span class="n">bugs</span> <span class="ow">and</span> <span class="n">feedback</span> <span class="n">to</span> <span class="n">roland</span><span class="o">.</span><span class="n">schmucki</span><span class="nd">@roche</span><span class="o">.</span><span class="n">com</span>
+
+</pre></div>
+</div>
+</section>
+<section id="reorder-gct">
+<h2>reorder_gct<a class="headerlink" href="#reorder-gct" title="Permalink to this heading"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+  <span class="n">Usage</span><span class="p">:</span> <span class="n">reorder_gct</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="o">-</span><span class="n">g</span> <span class="n">GCT_FILE</span> <span class="o">-</span><span class="n">s</span> <span class="n">SAMPLE_FILE</span>
+  
+  <span class="n">Re</span><span class="o">-</span><span class="n">order</span> <span class="n">samples</span> <span class="p">(</span><span class="n">columns</span><span class="p">)</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">GCT</span> <span class="n">file</span> <span class="n">by</span>
+  <span class="n">the</span> <span class="n">names</span> <span class="n">given</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">SAMPLE</span> <span class="n">file</span><span class="o">.</span>
+
+    <span class="o">-</span><span class="n">g</span>   <span class="nb">input</span> <span class="n">GCT</span> <span class="n">file</span>
+    <span class="o">-</span><span class="n">s</span>   <span class="nb">input</span> <span class="n">SAMPLE</span> <span class="n">file</span> <span class="k">with</span> <span class="n">re</span><span class="o">-</span><span class="n">ordered</span> <span class="n">sample</span> <span class="n">names</span> <span class="p">(</span><span class="n">file</span> <span class="n">must</span> <span class="n">contain</span> <span class="n">exactly</span> <span class="n">one</span> <span class="n">column</span><span class="p">)</span>
+
+  <span class="n">Optional</span> <span class="n">arguments</span>
+
+    <span class="o">-</span><span class="n">h</span>   <span class="n">display</span> <span class="n">this</span> <span class="n">help</span> <span class="ow">and</span> <span class="n">exit</span>
+
+   <span class="n">Contact</span> <span class="n">roland</span><span class="o">.</span><span class="n">schmucki</span><span class="nd">@roche</span><span class="o">.</span><span class="n">com</span>
+
+</pre></div>
+</div>
+</section>
+<section id="replace-header-gct">
+<h2>replace_header_gct<a class="headerlink" href="#replace-header-gct" title="Permalink to this heading"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+  <span class="n">Usage</span><span class="p">:</span> <span class="n">replace_header_gct</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="o">-</span><span class="n">g</span> <span class="n">GCT_FILE</span> <span class="o">-</span><span class="n">s</span> <span class="n">SAMPLE_FILE</span>
+  
+  <span class="n">Replace</span> <span class="n">the</span> <span class="n">sample</span> <span class="n">names</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">GCT</span> <span class="n">file</span> <span class="n">by</span>
+  <span class="n">the</span> <span class="n">names</span> <span class="n">given</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">SAMPLE</span> <span class="n">file</span><span class="o">.</span>
+
+    <span class="o">-</span><span class="n">g</span>   <span class="nb">input</span> <span class="n">GCT</span> <span class="n">file</span>
+    <span class="o">-</span><span class="n">s</span>   <span class="nb">input</span> <span class="n">SAMPLE</span> <span class="n">file</span>
+         <span class="mi">2</span> <span class="n">columns</span> <span class="n">required</span><span class="p">:</span> 
+           <span class="mi">1</span><span class="n">st</span><span class="p">:</span> <span class="n">sample</span> <span class="n">names</span> <span class="ow">in</span> <span class="nb">input</span> <span class="n">GCT</span> <span class="n">file</span>
+           <span class="mi">2</span><span class="n">nd</span><span class="p">:</span> <span class="n">sample</span> <span class="n">names</span> <span class="ow">in</span> <span class="n">output</span> <span class="n">GCT</span> <span class="n">file</span>
+
+  <span class="n">Optional</span> <span class="n">arguments</span>
+
+    <span class="o">-</span><span class="n">h</span>   <span class="n">display</span> <span class="n">this</span> <span class="n">help</span> <span class="ow">and</span> <span class="n">exit</span>
+
+   <span class="n">Contact</span> <span class="n">roland</span><span class="o">.</span><span class="n">schmucki</span><span class="nd">@roche</span><span class="o">.</span><span class="n">com</span>
+
+</pre></div>
+</div>
+</section>
+<section id="sort-gct">
+<h2>sort_gct<a class="headerlink" href="#sort-gct" title="Permalink to this heading"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+  <span class="n">Usage</span><span class="p">:</span> <span class="n">sort_gct</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="o">-</span><span class="n">g</span> <span class="n">GCT_FILE</span> <span class="p">[</span><span class="o">-</span><span class="n">c</span> <span class="mi">1</span><span class="o">|</span><span class="mi">2</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">n</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">r</span><span class="p">]</span>
+
+  <span class="n">Sorts</span> <span class="nb">input</span> <span class="n">GCT</span> <span class="n">file</span> <span class="n">by</span> <span class="n">column</span> <span class="mi">1</span> <span class="p">(</span><span class="n">default</span><span class="p">)</span> <span class="ow">or</span> <span class="mi">2</span> <span class="ow">in</span> <span class="n">numeric</span> <span class="ow">or</span> <span class="n">alphabetic</span> <span class="p">(</span><span class="n">default</span><span class="p">)</span> <span class="n">order</span>
+  
+
+    <span class="o">-</span><span class="n">g</span>   <span class="nb">input</span> <span class="n">GCT</span> <span class="n">file</span>
+    <span class="o">-</span><span class="n">c</span>   <span class="n">column</span> <span class="mi">1</span> <span class="ow">or</span> <span class="mi">2</span> <span class="p">(</span><span class="n">default</span> <span class="ow">is</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="o">-</span><span class="n">n</span>   <span class="n">order</span> <span class="n">numerically</span> <span class="ow">or</span> <span class="n">alphabetically</span> <span class="p">(</span><span class="n">default</span><span class="p">)</span> 
+    <span class="o">-</span><span class="n">r</span>   <span class="n">reverse</span> <span class="n">order</span>
+
+  <span class="n">Optional</span> <span class="n">arguments</span>
+
+    <span class="o">-</span><span class="n">h</span>   <span class="n">display</span> <span class="n">this</span> <span class="n">help</span> <span class="ow">and</span> <span class="n">exit</span>
+
+   <span class="n">Contact</span> <span class="n">roland</span><span class="o">.</span><span class="n">schmucki</span><span class="nd">@roche</span><span class="o">.</span><span class="n">com</span>
+
+</pre></div>
+</div>
+</section>
+<section id="subset-gct">
+<h2>subset_gct<a class="headerlink" href="#subset-gct" title="Permalink to this heading"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="n">Usage</span><span class="p">:</span> <span class="n">subset_gct</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="o">-</span><span class="n">g</span> <span class="n">GCT_FILE</span> <span class="o">-</span><span class="n">k</span> <span class="n">KEYS_FILE</span> <span class="o">-</span><span class="n">s</span> <span class="n">SAMPLES_FILE</span>
+
+  <span class="n">Creates</span> <span class="n">a</span> <span class="n">subset</span> <span class="n">of</span> <span class="n">the</span> <span class="nb">input</span> <span class="n">GCT</span> <span class="n">file</span> 
+  
+    <span class="o">-</span><span class="n">g</span>   <span class="nb">input</span> <span class="n">GCT</span> <span class="n">file</span>
+    <span class="o">-</span><span class="n">k</span>   <span class="nb">input</span> <span class="n">KEYS</span> <span class="n">file</span>
+         <span class="mi">1</span> <span class="n">column</span> <span class="n">required</span><span class="p">:</span> 
+           <span class="mi">1</span><span class="n">st</span><span class="p">:</span> <span class="n">keys</span> <span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">g</span><span class="o">.</span> <span class="n">Genes</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">input</span> <span class="n">GCT</span> <span class="n">file</span>
+    <span class="o">-</span><span class="n">s</span>   <span class="nb">input</span> <span class="n">SAMPLES</span> <span class="n">file</span>
+         <span class="mi">1</span> <span class="n">column</span> <span class="n">required</span><span class="p">:</span>
+           <span class="mi">1</span><span class="n">st</span><span class="p">:</span> <span class="n">samples</span> <span class="n">names</span> <span class="ow">in</span> <span class="nb">input</span> <span class="n">GCT</span> <span class="n">file</span> <span class="n">to</span> <span class="n">output</span>
+  <span class="n">Optional</span> <span class="n">arguments</span>
+
+    <span class="o">-</span><span class="n">h</span>   <span class="n">display</span> <span class="n">this</span> <span class="n">help</span> <span class="ow">and</span> <span class="n">exit</span>
+
+   <span class="n">Contact</span> <span class="n">roland</span><span class="o">.</span><span class="n">schmucki</span><span class="nd">@roche</span><span class="o">.</span><span class="n">com</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="installation.html" class="btn btn-neutral float-left" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="contributing.html" class="btn btn-neutral float-right" title="Contributing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Roland Schmucki.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
