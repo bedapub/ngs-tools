@@ -1,7 +1,7 @@
 FROM ghcr.io/bedapub/bios-to-go:main
 
 LABEL author="Roland Schmucki" \
-      description="Helper tools for ngs data analysis" \
+      description="Helper tools and refsnake for ngs data analysis" \
       maintainer="roland.schmucki@roche.com"
 
 WORKDIR /usr/ngs-tools/
