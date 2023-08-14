@@ -24,7 +24,7 @@ D = ./doc
 S = ./scripts
 K = /usr/bios-to-go/kern
 
-all: $B $D $(PROGS) $D/tools.md
+all: $B $D $(PROGS) doc/tools.md
 
 clean:
 	for s in $(PROGS) ; do \
@@ -115,5 +115,5 @@ subset_gct: $S/subset_gct.sh
 	chmod +x $B/subset_gct
 
 # Make documentation
-doc: $B $S/make_doc.sh
+doc/tools.md: $B $S/make_doc.sh
 	mkdir -p $D && bash $S/make_doc.sh -b $B -o $D/tools.md
