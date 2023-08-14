@@ -22,10 +22,9 @@ O = ./obj
 C = ./csrc
 D = ./doc
 S = ./scripts
-R = ./refsnake
 K = /usr/bios-to-go/kern
 
-all: $B $D $(PROGS) $D/tools.md $D/snakeref.md
+all: $B $D $(PROGS) $D/tools.md
 
 clean:
 	for s in $(PROGS) ; do \
@@ -117,4 +116,4 @@ subset_gct: $S/subset_gct.sh
 
 # Make documentation
 doc: $B $S/make_doc.sh
-	mkdir -p $D && bash $S/make_doc.sh -b $B -o $D/tools.md && cp -p $R/README.md $D/snakeref.md
+	mkdir -p $D && bash $S/make_doc.sh -b $B -o $D/tools.md

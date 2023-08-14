@@ -14,7 +14,6 @@ Welcome to ngs-tools's documentation!
    usage.rst
    installation.rst
    tools.md
-   snakeref.md
    contributing.rst
    license.rst
 
